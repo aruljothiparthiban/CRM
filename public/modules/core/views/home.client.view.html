@@ -1,0 +1,69 @@
+<div id="wrapper">
+    <nav role="navigation" class="navbar-default navbar-static-side">
+        <div class="sidebar-collapse">
+            <ul id="side-menu" class="nav">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">{{authentication.user.displayName}}</strong>
+                                </span>
+                                <span class="text-muted text-xs block">
+                                    {{authentication.user.roles.toString()}}
+                                    <b class="caret"></b>
+                                </span>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu animated m-t-xs">
+                            <li><a data-ui-sref="home.profile">Profile</a></li>
+                            <li><a data-ui-sref="home.changePassword">Change Password</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:void(0);" data-ng-click="authentication.signout()">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        CRM
+                    </div>
+                </li>
+                <li data-ng-repeat="m in Menus">
+                    <a data-ui-sref="{{m.routeName}}">
+                        <i class="{{m.iconCss}}"></i>
+                        <span class="nav-label">{{m.title}}</span>
+                        <span data-ng-if="m.subMenus" class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse" data-ng-if="m.subMenus">
+                        <li data-ng-repeat="sm in m.subMenus">
+                            <a data-ui-sref="{{sm.routeName}}">{{sm.title}}</a>
+                        </li>                      
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="page-wrapper" class="gray-bg" style="min-height: 1446px;">
+        <div class="row border-bottom">
+            <nav style="margin-bottom: 0" role="navigation" class="navbar navbar-static-top">
+                <div class="navbar-header">
+                    <a data-ng-click="toggleNavbar($event)" href="#" class="navbar-minimalize minimalize-styl-2 btn btn-primary "><i class="fa fa-bars"></i></a>
+                    <form class="navbar-form-custom" role="search">
+                        <div class="form-group">
+                            <input type="text" id="top-search" name="top-search" class="form-control" placeholder="Search for something...">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to NP-CRM.</span>
+                    </li>                   
+                    <li>
+                        <a href="javascript:void(0);" data-ng-click="authentication.signout()">
+                            <i class="fa fa-sign-out"></i>Log out
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>        
+        <div class="wrapper wrapper-content" data-ui-view=""></div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+<!--<section class="row" data-ng-controller="AuthenticationController">
+	<h3 class="col-md-12 text-center">Sign up using your social accounts</h3>
+	<div class="col-md-12 text-center">
+		<a href="/auth/facebook" class="undecorated-link">
+			<img src="/modules/users/img/buttons/facebook.png">
+		</a>
+		<a href="/auth/twitter" class="undecorated-link">
+			<img src="/modules/users/img/buttons/twitter.png">
+		</a>
+		<a href="/auth/google" class="undecorated-link">
+			<img src="/modules/users/img/buttons/google.png">
+		</a>
+		<a href="/auth/linkedin" class="undecorated-link">
+			<img src="/modules/users/img/buttons/linkedin.png">
+		</a>
+		<a href="/auth/github" class="undecorated-link">
+			<img src="/modules/users/img/buttons/github.png">
+		</a>
+	</div>
+	<h3 class="col-md-12 text-center">Or with your email</h3>
+	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+			<fieldset>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+				</div>
+				<div class="text-center form-group">
+					<button type="submit" class="btn btn-large btn-primary">Sign up</button>&nbsp; or&nbsp;
+					<a href="/#!/signin" class="show-signup">Sign in</a>
+				</div>
+				<div data-ng-show="error" class="text-center text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>-->
+<div class="loginscreen animated" data-ng-if="tokenVefified">
+    <div style="margin-top: 100px;">
+        <form class="form-horizontal" method="post" data-ng-submit="signup()">
+            <div class="form-group">
+                <div class="col-lg-offset-4 col-lg-4">
+                    <h3>NP-CRM</h3>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Email</label>
+                <div class="col-lg-4">
+                    <input type="email" class="form-control" data-ng-model="credentials.email" autocomplete="on" disabled="disabled" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">First Name</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" data-ng-model="credentials.firstName" focus="focus" autocomplete="on" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Last Name</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" data-ng-model="credentials.lastName" autocomplete="on" required>
+                </div>
+            </div>            
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Office</label>
+                <div class="col-lg-4">
+                    <select class="form-control" data-ng-model="credentials.office" required>
+                        <option value="National">National</option>
+                        <option value="Vic">Vic</option>
+                        <option value="NSW">NSW</option>
+                        <option value="Tas">Tas</option>
+                        <option value="ACT">ACT</option>
+                        <option value="SA">SA</option>
+                        <option value="NT">NT</option>
+                        <option value="WA">WA</option>
+                        <option value="Qld">Qld</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">User name</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" data-ng-model="credentials.username" autocomplete="on" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Password</label>
+                <div class="col-lg-4">
+                    <input type="password" class="form-control" data-ng-model="credentials.password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-4 col-lg-4">
+                    <button type="submit" class="btn btn-primary">
+                        Register
+                    </button>
+                </div>
+            </div>
+            <!--<div data-ng-show="error" class="form-group">
+                <div class="col-lg-offset-3 col-lg-9 text-danger">
+                    <strong>{{error}}</strong>
+                </div>
+            </div>
+            <div data-ng-show="success" class="form-group">
+                <div class="col-lg-offset-3 col-lg-9 text-success">
+                    <strong>{{success.message}}</strong>
+                </div>
+            </div>-->
+        </form>
+        <!--<form data-ng-submit="signup()" method="post" role="form" class="m-t" autocomplete="off">
+            <div class="form-group">
+                <input data-ng-model="credentials.username" type="text" id="username" name="username" required="" placeholder="Username" class="form-control">
+            </div>
+            <div class="form-group">
+                <input data-ng-model="credentials.password" type="password" id="password" name="password" required="" placeholder="Password" class="form-control">
+            </div>
+            <button class="btn btn-primary block full-width m-b" type="submit">Login</button>
+
+            <a href="#"><small>Forgot password?</small></a>
+            <p class="text-muted text-center"><small>Do not have an account?</small></p>
+            <a href="register.html" class="btn btn-sm btn-white btn-block">Create an account</a>
+        </form>-->
+        <p class="m-t text-center"><small>copyright &copy; 2014</small> </p>
+    </div>
+</div>

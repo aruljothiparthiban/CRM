@@ -1,0 +1,126 @@
+﻿<div class="row" data-ng-init="grid.load()">
+    <div class="animated">
+        <div class="mail-box">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h2>Organizations</h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6 col-sm-6">
+                                <div class="btn-group">
+                                    <button data-ng-disabled="grid.selectedItems.length===0" class="btn btn-white btn-sm" data-toggle="modal" data-target="#deleteConfirmModal"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <a data-ui-sref="home.organizationNew" title="" data-placement="left" class="btn btn-white btn-sm">
+                                    <i class="fa fa-plus"></i>
+                                    New
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-sm-6 text-right">
+                                <div class="row btn-group">
+                                    <div class="col-xs-12 pr-30">
+                                        <span data-ng-if="(grid.count===1)">1 item</span>
+                                        <span data-ng-if="(grid.count>1)">{{grid.pageIndex}} - {{grid.items.length}} of {{grid.count}} items
+                                        </span>
+                                    </div>
+                                </div>
+                                <button data-ng-disabled="(grid.count<=10)" class="btn btn-white btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                    {{grid.pageSize}} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a data-ng-if="(grid.count>10)" href="#" data-ng-click="grid.setPageSize(10,$event)">10</a></li>
+                                    <li><a data-ng-if="(grid.count<20 && grid.count>10)" href="#" data-ng-click="grid.setPageSize(20,$event)">20</a></li>
+                                    <li><a data-ng-if="(grid.count<30 && grid.count>20)" href="#" data-ng-click="grid.setPageSize(30,$event)">30</a></li>
+                                    <li><a data-ng-if="(grid.count<50 && grid.count>30)" href="#" data-ng-click="grid.setPageSize(50,$event)">50</a></li>
+                                </ul>
+                                <div class="btn-group">
+                                    <button data-ng-disabled="(grid.items.length===grid.count || grid.pageIndex===1)" data-ng-click="grid.prev()" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                                    <button data-ng-disabled="(grid.items.length===grid.count)" data-ng-click="grid.next()" class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <colgroup>
+                                <col width="5%" />
+                                <col width="10%" />
+                                <col width="12%" />
+                                <col width="10%" />
+                                <col width="10%" />
+                                <col width="12%" />
+                                <col width="15%" />
+                                <col width="15%" />
+                                <col width="11%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" data-ng-model="grid.allSelected" data-ng-change="grid.selectAllChanged()" />
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Category</th>
+                                    <th>No of Peoples</th>
+                                    <th>Assigned to</th>
+                                    <th>Updated at</th>
+                                    <th>Updated by</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-click="detail(p)" class="read" data-ng-repeat="p in grid.items | filter:{ firstName : search}">
+                                    <td>
+                                        <input type="checkbox" data-stop-event="click" data-ng-model="p.selected" />
+                                    </td>
+                                    <td class="">{{p.name}}</td>
+                                    <td class="">{{p.address.line1}}</td>
+                                    <td class="">{{p.category.name}}</td>
+                                    <td class="">{{p.peoples.length}}</td>
+                                    <td class="">{{p.assignedTo.displayName}}</td>
+                                    <td class="">{{p.updatedAt | date:'dd/MM/yyyy HH:mm a'}}</td>
+                                    <td class="">{{p.updatedBy.displayName}}</td>
+                                    <td class="">
+                                        <a data-ui-sref="home.organizationEdit({id:'{{p._id}}'})" class="btn btn-white btn-xs">Edit</a>
+                                    </td>
+                                </tr>
+                                <tr class="read" data-ng-if="(grid.items.length===0)">
+                                    <td colspan="9" class="text-center">No Peoples found!</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Delete confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <p data-ng-if="grid.selectedItems.length===1">
+                        Would you like to delete <strong>{{grid.selectedItems[0].title}} {{grid.selectedItems[0].firstName}} {{grid.selectedItems[0].lastName}}</strong> ?
+                    </p>
+                    <div class="form-group" data-ng-if="grid.selectedItems.length>1">
+                        <p>
+                            Would you like to delete selected items?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-ng-click="delete()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

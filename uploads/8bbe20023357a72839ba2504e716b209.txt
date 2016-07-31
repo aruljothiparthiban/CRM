@@ -1,0 +1,33 @@
+How do we allocate an array dynamically in java?
+
+Explain with example how to initialize an array of objects.
+
+What is the difference between a Vector and an Array. Discuss the advantages and disadvantages of both?
+
+What is an Exception? Explain by giving an example.
+
+Checked Exceptions vs. Unchecked Exceptions.
+
+What is a user defined exception?
+
+What are the different ways to generate an Exception?
+
+How are try, catch and finally block organized?
+
+What is a throw in an Exception block?
+
+
+
+Find out duplicate number between 1 to N numbers.
+
+Write a program to find a perfect number or not.
+
+Write a program to find common elements between two arrays.
+
+How to swap two vairable without using temp variable ?
+
+Write a program to find a fibonacci series ?
+
+Write a program to find first 1000 prime numbers.
+
+

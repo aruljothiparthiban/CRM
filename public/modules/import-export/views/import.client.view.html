@@ -1,0 +1,32 @@
+﻿<div class="row">
+    <div class="animated">
+        <div class="mail-box">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h2>Import</h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <form id="file_upload_form" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6 col-sm-6">
+                                    <div class="btn-group">
+                                        <button class="btn btn-white btn-sm dropdown-toggle" data-toggle="dropdown">
+                                            {{target||'Choose target'}}<span class="pl-5"><span class="caret"></span></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" data-ng-click="chooseTarget('Peoples',$event)">Peoples</a></li>
+                                            <li><a href="#" data-ng-click="chooseTarget('Organisations',$event)">Organisations</a></li>
+                                            <li><a href="#" data-ng-click="chooseTarget('Activities',$event)">Activities</a></li>
+                                        </ul>
+                                    </div>
+                                    <label data-ng-disabled="!target" class="btn btn-white btn-sm">
+                                        <i class="fa fa-upload"></i>Upload
+                                        <input onchange="angular.element(this).scope().importFromCsv(this,event)" type="file" style="display: none;" id="csv" name="csv" />
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

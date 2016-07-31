@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <div class="animated">
+        <div class="mail-box">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h2>Invite user</h2>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" method="post" data-ng-submit="inviteUser()">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email</label>
+                            <div class="col-lg-4">
+                                <input type="email" class="form-control" data-ng-model="user.email" focus="focus" autocomplete="on" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-4">
+                                <button data-ng-disabled="isProcessing" type="submit" class="btn btn-primary">
+                                    <span>{{isProcessing?'Sending ...':'Send Invitation'}}</span>
+                                    <i data-ng-if="isProcessing" class="fa fa-spinner fa-spin"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div data-ng-show="error" class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9 text-danger">
+                                <strong>{{error}}</strong>
+                            </div>
+                        </div>
+                        <div data-ng-show="success" class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9 text-success">
+                                <strong>{{success.message}}</strong>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

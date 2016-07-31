@@ -1,0 +1,51 @@
+﻿<div class="row" data-ng-init="findOne()">
+    <div class="animated">
+        <div class="mail-box">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h2>Activity Detail</h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a data-ui-sref="home.activities" title="" data-placement="left" class="btn btn-white btn-sm">
+                                    <i class="fa fa-arrow-left"></i>
+                                    Go back
+                                </a>
+                                <a data-ui-sref="home.activityEdit({id:'{{$parent.params.id}}'})" title="" data-placement="left" class="btn btn-white btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                    Edit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="ibox float-e-margins">
+                                <div>
+                                    <div class="ibox-content profile-content">
+                                        <h4><strong>{{activity.subject}}</strong></h4>
+                                        <p>{{activity.type.name}}</p>
+                                        <h5>Notes</h5>
+                                        <p>{{activity.notes}}</p>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="ibox float-e-margins">
+                                <div>
+                                    <div class="ibox-content profile-content">
+                                        <h5>Peoples</h5>
+                                        <p data-ng-repeat="p in activity.peoples">{{p.id.name}}</p>                                                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

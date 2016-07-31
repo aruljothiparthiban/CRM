@@ -1,0 +1,17 @@
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div style="margin-top:100px;">
+        <h3>NP-CRM</h3>       
+        <form data-ng-submit="signin()" method="post" role="form" class="m-t" autocomplete="off">
+            <div class="form-group">
+                <input data-ng-model="credentials.username" type="text" id="username" name="username"  required="" placeholder="Username" class="form-control">
+            </div>
+            <div class="form-group">
+                <input data-ng-model="credentials.password" type="password" id="password" name="password" required="" placeholder="Password" class="form-control">
+            </div>
+            <button class="btn btn-primary block full-width m-b" type="submit">Login</button>
+
+            <a data-ui-sref="forgotPassword"><small>Forgot password?</small></a>            
+        </form>
+        <p class="m-t"><small>copyright &copy; 2014</small> </p>
+    </div>
+</div>

@@ -1,0 +1,162 @@
+﻿<div class="row" data-ng-init="findOne()">
+    <div class="animated">
+        <div class="mail-box">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h2>About People</h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a data-ui-sref="home.peoples" title="" data-placement="left" class="btn btn-white btn-sm">
+                                    <i class="fa fa-arrow-left"></i>
+                                    Go back
+                                </a>
+                                <a data-ui-sref="home.peopleEdit({id:'{{$parent.params.id}}'})" title="" data-placement="left" class="btn btn-white btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                    Edit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>{{people.title}} {{people.firstName}} {{people.lastName}}</h5>
+                                </div>
+                                <div>
+                                    <div class="ibox-content profile-content">
+                                        <table class="table table-striped">
+                                            <colgroup>
+                                                <col width="100%" />
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td><i class="fa fa-map-marker fa-fw"></i>
+                                                    {{people.address.line1}},
+                                                    {{people.address.line2}},
+                                                    {{people.address.suburb}},
+                                                    {{people.address.postcode}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-envelope fa-fw pr-5"></i>{{people.primaryEmail}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-phone fa-fw pr-5"></i>{{people.primaryPhone}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><p>{{people.notes}}</p>        </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Activities</h5>
+                                </div>
+                                <div>
+                                    <div class="ibox-content profile-content">
+                                        <table class="table table-striped">
+                                            <colgroup>
+                                                <col width="30%" />
+                                                <col width="20%" />
+                                                <col width="20%" />
+                                                <col width="30%" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>Subject</th>
+                                                    <th>Type</th>
+                                                    <th>Date</th>
+                                                    <th>Peoples</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr data-ng-click="activityClick(p)" data-ng-repeat="p in activities">
+                                                    <td>{{p.subject}}</td>
+                                                    <td>{{p.type.name}}</td>
+                                                    <td>{{p.updatedAt | date:'dd/MM/yyyy HH:mm a'}}</td>
+                                                    <td>
+                                                        <p data-ng-repeat="x in p.peoples"><i class="fa fa-user" style="margin-right:5px;"></i>{{x.title}} {{x.firstName}} {{x.lastName}}</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                             
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Organizations</h5>
+                                </div>
+                                <div>
+                                    <div class="ibox-content profile-content">
+                                        <table class="table table-striped">
+                                            <colgroup>
+                                                <col width="40%" />
+                                                <col width="60%" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Address</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr data-ng-repeat="p in people.organizations">
+                                                    <td>{{p.id.name}}</td>
+                                                    <td>
+                                                        <p>{{p.id.address.line1}} 
+                                                        {{p.id.address.line2?','+p.id.address.line2:''}} 
+                                                        {{p.id.address.suburb?','+p.id.address.suburb:''}}
+                                                        {{p.id.address.postcode?','+p.id.address.postcode:''}} </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                        <div class="col-md-4 col-xs-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Subscriptions</h5>
+                                </div>
+                                <div>
+                                    <div class="ibox-content profile-content">
+                                        <table class="table table-striped">
+                                            <colgroup>
+                                                <col width="100%" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr data-ng-repeat="p in people.subscriptions">
+                                                    <td>{{p.id.name}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
